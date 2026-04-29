@@ -10,6 +10,9 @@ public class Shooter : MonoBehaviour
     void Update()
     {
         Vector2 screePos = Mouse.current.position.ReadValue();
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(screePos);
+        worldPos.z = 0;
+        target.transform.position = worldPos;
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -20,7 +23,7 @@ public class Shooter : MonoBehaviour
 
             if (hit.collider != null)
             {
-                target.transform.position = new Vector2(hit.point.x, hit.point.y);
+                //target.transform.position = new Vector2(hit.point.x, hit.point.y);
                 Debug.Log($"Hit {hit.collider.gameObject.name}");
 
                 Vector2 projectileVelocity = CalculateProjectileVelocity(shootPoint.position, hit.point, 1f);
