@@ -14,7 +14,7 @@ public class Shooter : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = Camera.main.ScreenPointToRay(screePos);
-            Debug.DrawRay(ray.origin, ray.direction * 5, Color.red, 5f);
+            Debug.DrawRay(ray.origin, ray.direction * 10, Color.red, 5f);
 
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
